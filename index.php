@@ -7,11 +7,11 @@
 var app = angular.module('myApplication', []);
 app.controller('postController', function($scope, $http) {
   var url = 'rest/api.php/alliage';
-	$http.post(url,{ID_ALLIAGE:4,Nom:"toto"}).success(function(){
+//	$http.post(url,{ID_ALLIAGE:4,Nom:"toto"}).success(function(){
     $http.get(url).success(function(response){
 		  $scope.alliage = php_crud_api_transform(response).alliage;
 	  });
-  });
+//  });
 });
 </script>
 </head>
