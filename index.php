@@ -1,53 +1,54 @@
 <!DOCTYPE HTML>
 <html ng-app="ui.bootstrap.demo">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="rest/lib/php_crud_api_transform.js"></script>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="rest/lib/php_crud_api_transform.js"></script>
 <script>
-
-
-var app = angular.module('ui.bootstrap.demo', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
-app.controller('postController', function($scope, $http) {
-  var url = 'rest/api.php/alliage';
-//	$http.post(url,{ID_ALLIAGE:4,Nom:"toto"}).success(function(){
-    $http.get(url).then(function(response){
-		  $scope.alliage = php_crud_api_transform(response).alliage;
-	  });
-//  });
-
-
-	$scope.alliage = [{ID_ALLIAGE : "1", Nom : "toto"}];
-});
-
-
+	var app = angular.module('ui.bootstrap.demo', []);
+	app.controller('postController', function($scope, $http) {
+ 
+		$http.get('rest/api.php/alliage').success(function(response){
+			$scope.alliage = php_crud_api_transform(response).alliage; });
+			
+		$http.get('rest/api.php/procede').success(function(response){
+			$scope.procede = php_crud_api_transform(response).procede; });
+			
+		$http.get('rest/api.php/secteur').success(function(response){
+			$scope.secteur = php_crud_api_transform(response).secteur; });
+			
+		$http.get('rest/api.php/technique').success(function(response){
+			$scope.technique = php_crud_api_transform(response).technique; });
+			
+		$http.get('rest/api.php/typedefaut').success(function(response){
+			$scope.typedefaut = php_crud_api_transform(response).typedefaut; });		  
+	});
 </script>
+
 </head>
 <body>
-<!--
-<div ng-app="myApplication" ng-controller="postController">
-  <ul>
-    <li ng-repeat="x in alliage">{{ x.ID_ALLIAGE + ', ' + x.Nom }}</li>
-  </ul>
-</div>
--->
-<div ng-controller="postController">
-    <!-- Single button -->
-    <div class="btn-group" uib-dropdown is-open="status.isopen">
-      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-        Button dropdown <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-        <li ng-repeat="x in alliage" role="menuitem"><a href="#" ng-bind="x.Nom"></a></li>
-      </ul>
-    </div>
-</div>	
 
+<div ng-controller="postController">
+
+ <select>
+  <option ng-repeat="x in alliage" value="{{ x.ID_ALLIAGE }}">{{ x.Nom }}</option>
+</select> 
+
+ <select>
+  <option ng-repeat="x in procede" value="{{ x.ID_DEFAUT }}">{{ x.Nom }}</option>
+</select> 
+
+ <select>
+  <option ng-repeat="x in secteur" value="{{ x.ID_SECTEUR }}">{{ x.Nom }}</option>
+</select> 
+
+ <select>
+  <option ng-repeat="x in technique" value="{{ x.ID_TECHNIQUE }}">{{ x.Nom }}</option>
+</select> 
+
+ <select>
+  <option ng-repeat="x in typedefaut" value="{{ x.ID_TYPE_DEFAUT }}">{{ x.Nom }}</option>
+</select> 
 
 </body>
 </html>
