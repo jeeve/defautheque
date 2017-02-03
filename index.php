@@ -1,54 +1,61 @@
 <!DOCTYPE HTML>
-<html ng-app="ui.bootstrap.demo">
+<html ng-app="defautheque">
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 	<script src="rest/lib/php_crud_api_transform.js"></script>
 
 <script>
-	var app = angular.module('ui.bootstrap.demo', []);
-	app.controller('postController', function($scope, $http) {
+	var app = angular.module('defautheque', []);
+	app.controller('selection', function($scope, $http) {
  
 		$http.get('rest/api.php/alliage').success(function(response){
-			$scope.alliage = php_crud_api_transform(response).alliage; });
+			$scope.alliages = php_crud_api_transform(response).alliage; });
 			
 		$http.get('rest/api.php/procede').success(function(response){
-			$scope.procede = php_crud_api_transform(response).procede; });
+			$scope.procedes = php_crud_api_transform(response).procede; });
 			
 		$http.get('rest/api.php/secteur').success(function(response){
-			$scope.secteur = php_crud_api_transform(response).secteur; });
+			$scope.secteurs = php_crud_api_transform(response).secteur; });
 			
-		$http.get('rest/api.php/technique').success(function(response){
-			$scope.technique = php_crud_api_transform(response).technique; });
+		$http.get('rest/api.php/echantillon').success(function(response){
+			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
 			
-		$http.get('rest/api.php/typedefaut').success(function(response){
-			$scope.typedefaut = php_crud_api_transform(response).typedefaut; });		  
+		$scope.alliage = null;
+		$scope.procede = null;
+		$scope.secteur = null;
+
+		$scope.maSelection = function(echantillon) {
+			if ($scope.alliage != null)
+				return echantillon.ID_ALLIAGE == $scope.alliage.ID_ALLIAGE;
+			else
+				if ($scope.procede != null)
+					return echantillon.ID_PROCEDE == $scope.procede.ID_PROCEDE;
+				else
+					if ($scope.secteur != null)
+						return echantillon.ID_SECTEUR == $scope.secteur.ID_SECTEUR;
+					else
+						return false;
+		};
+
+		$scope.changeAlliage = function() { $scope.procede = null; $scope.secteur = null; }
+		$scope.changeProcede = function() { $scope.alliage = null; $scope.secteur = null; }
+		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; }
+		
 	});
 </script>
 
 </head>
 <body>
 
-<div ng-controller="postController">
+<div ng-controller="selection">
 
- <select>
-  <option ng-repeat="x in alliage" value="{{ x.ID_ALLIAGE }}">{{ x.Nom }}</option>
-</select> 
+	<select ng-options="alliage as alliage.Nom for alliage in alliages track by alliage.ID_ALLIAGE" ng-model="alliage" ng-change="changeAlliage()"></select> 
+	<select ng-options="procede as procede.Nom for procede in procedes track by procede.ID_PROCEDE" ng-model="procede" ng-change="changeProcede()"></select> 
+	<select ng-options="secteur as secteur.Nom for secteur in secteurs track by secteur.ID_SECTEUR" ng-model="secteur" ng-change="changeSecteur()"></select> 
 
- <select>
-  <option ng-repeat="x in procede" value="{{ x.ID_DEFAUT }}">{{ x.Nom }}</option>
-</select> 
-
- <select>
-  <option ng-repeat="x in secteur" value="{{ x.ID_SECTEUR }}">{{ x.Nom }}</option>
-</select> 
-
- <select>
-  <option ng-repeat="x in technique" value="{{ x.ID_TECHNIQUE }}">{{ x.Nom }}</option>
-</select> 
-
- <select>
-  <option ng-repeat="x in typedefaut" value="{{ x.ID_TYPE_DEFAUT }}">{{ x.Nom }}</option>
-</select> 
-
+	<div ng-repeat="echantillon in echantillons | filter: maSelection">
+		<img ng-src={{echantillon.Photo}}>
+	</div>	
+	
 </body>
 </html>
