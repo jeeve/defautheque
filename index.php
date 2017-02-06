@@ -17,13 +17,15 @@
 	</div>	
 
 	<div id="side">
-		<div ng-repeat="echantillon in echantillons | filter: maSelection">
-			<img ng-src={{echantillon.Photo}}>
+		<div ng-repeat="e in echantillons | filter: maSelection">
+			<a href="#" ng-click="selectEchantillon(e)">
+				<img ng-src={{e.Photo}}>
+			</a>	
 		</div>	
 	</div>
 
 	<div id="main">
-		<img src="Pièces/E1.jpg">
+		<img ng-src={{echantillon.Photo}}>
 	</div>
 	
 </body>

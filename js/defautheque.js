@@ -16,6 +16,11 @@
 		$scope.alliage = null;
 		$scope.procede = null;
 		$scope.secteur = null;
+		$scope.echantillon = null;
+		
+		$scope.selectEchantillon = function(e) {
+			$scope.echantillon = e;
+		}
 
 		$scope.maSelection = function(echantillon) {
 			if ($scope.alliage != null)
