@@ -1,4 +1,21 @@
-	var app = angular.module('defautheque', []);
+	var app = angular.module('defautheque', ['ngRoute']);
+
+	app.config(function($routeProvider) {
+    $routeProvider.
+    when("/", {
+      templateUrl: 'index.html',
+      controller: 'selection'
+    }).
+    when("/echantillon/:id", {
+      templateUrl: 'route/echantillon.html',
+      controller: 'echantillon'
+    }).
+    otherwise({
+      redirectTo: '/'
+    });
+  //  $locationProvider.html5Mode(true);
+	});
+  
 	app.controller('selection', function($scope, $http) {
  
 		$http.get('rest/api.php/alliage').success(function(response){
@@ -9,19 +26,14 @@
 			
 		$http.get('rest/api.php/secteur').success(function(response){
 			$scope.secteurs = php_crud_api_transform(response).secteur; });
-			
+				
 		$http.get('rest/api.php/echantillon').success(function(response){
 			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
-			
+
 		$scope.alliage = null;
 		$scope.procede = null;
 		$scope.secteur = null;
-		$scope.echantillon = null;
 		
-		$scope.selectEchantillon = function(e) {
-			$scope.echantillon = e;
-		}
-
 		$scope.maSelection = function(echantillon) {
 			if ($scope.alliage != null)
 				return echantillon.ID_ALLIAGE == $scope.alliage.ID_ALLIAGE;
@@ -40,3 +52,14 @@
 		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; }
 		
 	});
+	
+  	app.controller('echantillon', function($scope, $http, $routeParams) {
+		
+		$http.get('rest/api.php/echantillon').success(function(response){
+			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
+		$scope.echantillon = echantillons[8];
+
+	});
+
+
+

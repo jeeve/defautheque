@@ -3,6 +3,7 @@
 <head>
 	<link href="css/style.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
 	<script src="rest/lib/php_crud_api_transform.js"></script>
 	<script src="js/defautheque.js"></script>
 </head>
@@ -18,15 +19,13 @@
 
 	<div id="side">
 		<div ng-repeat="e in echantillons | filter: maSelection">
-			<a href="#" ng-click="selectEchantillon(e)">
-				<img ng-src={{e.Photo}}>
+			<a ng-href="#/echantillon/{{e.ID_ECHANTILLON}}">
+				<img ng-src="{{e.Photo}}">
 			</a>	
 		</div>	
 	</div>
 
-	<div id="main">
-		<img ng-src={{echantillon.Photo}}>
-	</div>
+	<div ng-view id="main"></div>
 	
 </body>
 </html>
