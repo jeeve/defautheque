@@ -1,5 +1,6 @@
 #top {
 	 position:fixed;
+	 left:0;
 	 top:0px;
 	 height:25px;
 	 z-index: 999;
@@ -9,11 +10,22 @@
 }
 
 #side {
+	 float: left;
      position:absolute;	
-	 top:25px;
+	 top:40px;
 	 width:200px;
 }
 
-img {	
-  width:100%;
+#side img {
+	width: 100%;
+}
+
+#main {
+	position:fixed;
+	width:100%;
+}
+
+#main img {
+	float: right;
+	width:200px;
 }

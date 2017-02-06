@@ -20,7 +20,11 @@
 		<div ng-repeat="echantillon in echantillons | filter: maSelection">
 			<img ng-src={{echantillon.Photo}}>
 		</div>	
-	</div>	
+	</div>
+
+	<div id="main">
+		<img src="Pièces/E1.jpg">
+	</div>
 	
 </body>
 </html>
