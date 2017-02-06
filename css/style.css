@@ -1,0 +1,19 @@
+#top {
+	 position:fixed;
+	 top:0px;
+	 height:25px;
+	 z-index: 999;
+	 background-color:#888;
+	 width:100%;
+	 padding:5px;
+}
+
+#side {
+     position:absolute;	
+	 top:25px;
+	 width:200px;
+}
+
+img {	
+  width:100%;
+}
