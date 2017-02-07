@@ -27,6 +27,7 @@
 	background-color: #BBB;
 	left: 215px;
 	width: calc(100% - 220px);
+	height: 170px;
 }
 
 #echantillon  p {
@@ -38,18 +39,16 @@
 }
 
 #vues img {
-	width: 150px;
+	height: 150px;
 	float: left;
 }
 
 #photo {
-	background-color: #EEE;
 	width: calc(100% - 220px);
 	position: absolute;
 	left: 215px;
-	top: 340px;
+	top: 220px;
 	z-index: -20;
-	height:1000px;
 }
 
 #photo img {
