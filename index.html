@@ -2,8 +2,13 @@
 <html ng-app="defautheque">
 <head>
 	<link href="css/style.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<!--
+	<script src="js/angular.min.js"></script>
 	<script src="js/angular-route.min.js"></script>
+-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular-route.min.js"></script>
+
 	<script src="rest/lib/php_crud_api_transform.js"></script>
 	<script src="js/defautheque.js"></script>
 </head>
@@ -25,7 +30,8 @@
 		</div>	
 	</div>
 
+
 	<div ng-view id="main"></div>
-	
+</div>	
 </body>
 </html>

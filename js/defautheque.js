@@ -1,5 +1,5 @@
 	var app = angular.module('defautheque', ['ngRoute']);
-
+/*
 	app.config(function($routeProvider) {
     $routeProvider.
     when("/", {
@@ -13,9 +13,8 @@
     otherwise({
       redirectTo: '/'
     });
-  //  $locationProvider.html5Mode(true);
 	});
-  
+ */
 	app.controller('selection', function($scope, $http) {
  
 		$http.get('rest/api.php/alliage').success(function(response){
@@ -53,13 +52,12 @@
 		
 	});
 	
-  	app.controller('echantillon', function($scope, $http, $routeParams) {
-		
-		$http.get('rest/api.php/echantillon').success(function(response){
-			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
-		$scope.echantillon = echantillons[8];
+  	app.controller('echantillon', function($scope) //, $http, $routeParams) {
+		{	
+	//	$http.get('rest/api.php/echantillon').success(function(response){
+	//		$scope.echantillons = php_crud_api_transform(response).echantillon; });	
+	//	$scope.echantillon = "toto"; //echantillons[8];
 
 	});
-
 
 
