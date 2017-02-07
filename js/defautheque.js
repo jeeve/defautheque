@@ -1,21 +1,14 @@
 	var app = angular.module('defautheque', ['ngRoute']);
-/*
-	app.config(function($routeProvider) {
-    $routeProvider.
-    when("/", {
-      templateUrl: 'index.html',
-      controller: 'selection'
-    }).
-    when("/echantillon/:id", {
-      templateUrl: 'route/echantillon.html',
-      controller: 'echantillon'
-    }).
-    otherwise({
-      redirectTo: '/'
-    });
-	});
- */
-	app.controller('selection', function($scope, $http) {
+
+	app.config(['$routeProvider', function($routeProvider) {
+		$routeProvider
+		.when("/echantillon/:id", {
+			templateUrl: 'route/echantillon.html',
+			controller: 'echantillon'
+		})
+	}]);
+	
+	app.controller('selection', ['$scope', '$http', function($scope, $http) {
  
 		$http.get('rest/api.php/alliage').success(function(response){
 			$scope.alliages = php_crud_api_transform(response).alliage; });
@@ -50,14 +43,12 @@
 		$scope.changeProcede = function() { $scope.alliage = null; $scope.secteur = null; }
 		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; }
 		
-	});
+	}
+	]);
 	
-  	app.controller('echantillon', function($scope) //, $http, $routeParams) {
-		{	
-	//	$http.get('rest/api.php/echantillon').success(function(response){
-	//		$scope.echantillons = php_crud_api_transform(response).echantillon; });	
-	//	$scope.echantillon = "toto"; //echantillons[8];
+  	app.controller('echantillon', ['$scope', '$routeParams', function($scope, $routeParams) {	
+		$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
 
-	});
+	}]);
 
 
