@@ -11,9 +11,9 @@
 
 #side {
 	 float: left;
-     position:absolute;	
-	 top:40px;
-	 width:200px;
+     position: absolute;	
+	 top: 40px;
+	 width: 200px;
 }
 
 #side img {
@@ -21,16 +21,16 @@
 }
 
 #main {
-	position:fixed;
-	top:40px;
+	position: fixed;
+	top: 40px;
 	z-index: -10;
-	background-color:#BBB;
-	width:100%;
+	background-color: #BBB;
+	left: 215px;
+	width: calc(100% - 220px);
 }
 
 .echantillon  p {
 	float: right;
-	margin-right: 15px;	
 }
 
 .echantillon img {
