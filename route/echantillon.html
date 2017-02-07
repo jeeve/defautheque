@@ -1,5 +1,23 @@
-<div class="echantillon">
+<div id="echantillon">
   <p>
 	<img ng-src="{{echantillon.Photo}}">
+	
+	<div id="vues">
+		<div ng-repeat="v in vues | filter: vuesEchantillon">
+	       <a href="" ng-click="selectVue(v)">
+				<img ng-src="{{v.Photo}}">
+			</a>
+		</div>	
+	</div>	
+	
   </p>	
 </div>	
+
+<div id="photo">
+{{vue.Photo}}
+
+<img ng-src="{{vue.Photo}}">
+
+</div>
+
+
