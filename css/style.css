@@ -34,7 +34,7 @@ body {
 
 #echantillon {
 	position: fixed;
-	top: 40;
+	top: 35px;
 	z-index: -10;
 	background-color: #BBB;
 	left: 215px;
