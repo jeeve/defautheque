@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html ng-app="defautheque">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
 	<link href="css/style.css" rel="stylesheet">
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
@@ -14,8 +16,11 @@
 <div ng-controller="selection">
 
 	<div id="top">
+        Matériau
 		<select ng-options="alliage as alliage.Nom for alliage in alliages track by alliage.ID_ALLIAGE" ng-model="alliage" ng-change="changeAlliage()"></select> 
+		Procédé
 		<select ng-options="procede as procede.Nom for procede in procedes track by procede.ID_PROCEDE" ng-model="procede" ng-change="changeProcede()"></select> 
+		Secteur
 		<select ng-options="secteur as secteur.Nom for secteur in secteurs track by secteur.ID_SECTEUR" ng-model="secteur" ng-change="changeSecteur()"></select> 
 	</div>	
 
