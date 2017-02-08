@@ -48,7 +48,16 @@
 	
   	app.controller('echantillon', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {	
 		
-		$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
+		// compatibilite IE sinon utiliser find
+		$scope.echantillon = null;
+		for (var i = 0; i < $scope.$parent.echantillons.length; i++) {
+			if ($scope.$parent.echantillons[i].ID_ECHANTILLON == $routeParams.id) {
+				$scope.echantillon = $scope.$parent.echantillons[i];
+				break;
+			}
+		}
+		
+		//$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
 
 		$http.get('rest/api.php/vue').success(function(response){
 			$scope.vues = php_crud_api_transform(response).vue; });	
