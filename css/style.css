@@ -1,3 +1,7 @@
+body {
+	background-color: black;
+}
+
 #top {
 	 position:fixed;
 	 left:0;
@@ -28,12 +32,12 @@
 	z-index: -10;
 	background-color: #BBB;
 	left: 215px;
-	width: calc(100% - 220px);
-	height: 170px;
+	width: calc(100% - 220px);	
 }
 
 #echantillon  p {
 	float: right;
+	margin: 0;
 }
 
 #echantillon p img {
@@ -43,6 +47,8 @@
 #vues img {
 	height: 150px;
 	float: left;
+	border: 3px solid grey;
+	margin: 2px;
 }
 
 #photo {
