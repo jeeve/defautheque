@@ -13,11 +13,20 @@
   </p>	
 </div>	
 
-<div id="photo">
-{{vue.Photo}}
+<div id="vue">
+	<div id="photo">
+		<img ng-src="{{vue.Photo}}">
+	</div>
+	<div id="caracteristiques">
+		<table >
+			<tr ng-show="vue.Source"><td>Source</td><td>{{vue.Source}}</td></tr>
+			<tr ng-show="vue.Format"><td>Format</td><td>{{vue.Format}}</td></tr>
+			<tr ng-show="vue.Filtre"><td>Filtre</td><td>{{vue.Filtre}}</td></tr>
+			<tr ng-show="vue.Ecran"><td>Ecran</td><td>{{vue.Ecran}}</td></tr>
+			<tr ng-show="vue.TypeDeFilm"><td>Type de film</td><td>{{vue.TypeDeFilm}}</td></tr>
+		</table>
+	</div>	
+</div>	
 
-<img ng-src="{{vue.Photo}}">
-
-</div>
 
 

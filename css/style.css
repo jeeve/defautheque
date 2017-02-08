@@ -33,6 +33,7 @@ body {
 	background-color: #BBB;
 	left: 215px;
 	width: calc(100% - 220px);	
+	height: 150px;
 }
 
 #echantillon  p {
@@ -41,24 +42,35 @@ body {
 }
 
 #echantillon p img {
-	width: 200px;
+	height: 150px;
 }
 
 #vues img {
-	height: 150px;
+	height: 140px;
 	float: left;
 	border: 3px solid grey;
 	margin: 2px;
 }
 
-#photo {
+#vue {
 	width: calc(100% - 220px);
 	position: absolute;
 	left: 215px;
-	top: 220px;
+	top: 200px;
 	z-index: -20;
 }
 
 #photo img {
-	width: 100%;
+	width: calc(100% - 200px);
+	float : left;
 }
+
+#caracteristiques {
+	background-color: white;
+	height: 100%;
+}
+
+#caracteristiques td {
+	vertical-align: top;
+}
+
