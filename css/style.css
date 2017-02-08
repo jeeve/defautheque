@@ -26,6 +26,10 @@ body {
 	width: 100%;
 }
 
+#side a img:hover {
+    opacity: 0.5;
+}
+
 #echantillon {
 	position: fixed;
 	top: 40px;
@@ -51,6 +55,10 @@ body {
 	border: 3px solid grey;
 	margin: 2px;
 }
+
+#vues img:hover {
+    opacity: 0.5;
+}	
 
 #vue {
 	width: calc(100% - 220px);
