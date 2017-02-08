@@ -11,9 +11,11 @@
 
 #side {
 	 float: left;
-     position: absolute;	
+     position: fixed;	
 	 top: 40px;
 	 width: 200px;
+	 height: calc(100% - 40px);
+	 overflow-y: scroll;
 }
 
 #side img {
