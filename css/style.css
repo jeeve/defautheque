@@ -13,7 +13,20 @@ body {
 	 background-color: #888;
 	 width: 100%;
 	 padding: 5px;
+	 color: #6AE8AC;
 }
+
+#choix {
+	float: left;
+} 
+
+#titre {
+	text-align: right;
+	margin-top: 0px;
+	margin-right: 10px;
+	font-size: 18px;
+	font-weight: bold;
+} 
 
 #side {
 	 float: left;
@@ -84,6 +97,7 @@ body {
 #photo img {
 	width: calc(100% - 200px);
 	float : left;
+    margin: auto;
 }
 
 #caracteristiques {
