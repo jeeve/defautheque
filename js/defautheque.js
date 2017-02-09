@@ -3,7 +3,7 @@
 	app.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
 		.when("/echantillon/:id", {
-			templateUrl: 'route/echantillon.html',
+			templateUrl: 'views/echantillon.html',
 			controller: 'echantillon'
 		})
 	}]);
@@ -42,9 +42,9 @@
 						return false;
 		};
 
-		$scope.changeAlliage = function() { $scope.procede = null; $scope.secteur = null; }
-		$scope.changeProcede = function() { $scope.alliage = null; $scope.secteur = null; }
-		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; }
+		$scope.changeAlliage = function() { $scope.procede = null; $scope.secteur = null; $scope.$broadcast('initEchantillon'); }
+		$scope.changeProcede = function() { $scope.alliage = null; $scope.secteur = null; $scope.$broadcast('initEchantillon'); }
+		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; $scope.$broadcast('initEchantillon'); }
 		
 	}
 	]);
@@ -63,7 +63,10 @@
 		//$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
 		
 		$scope.vuesEchantillon = function(vue) {
-			return vue.ID_ECHANTILLON == $scope.echantillon.ID_ECHANTILLON;
+			if ($scope.echantillon != null)
+				return vue.ID_ECHANTILLON == $scope.echantillon.ID_ECHANTILLON;
+			else
+				return null;
 		}	
 		
 		$scope.vue = null;
@@ -72,6 +75,11 @@
 			$scope.vue = v
 		}
 
+		$scope.$on('initEchantillon', function(evt) {
+			$scope.echantillon = null;
+			$scope.vue = null;		
+		});
+		
 	}]);
 
 

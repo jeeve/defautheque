@@ -1,6 +1,6 @@
 <div id="echantillon">
   <p>
-	<img ng-src="{{echantillon.Photo}}">
+	<img ng-show="echantillon" ng-src="{{echantillon.Photo}}">
 	
 	<div id="vues">
 		<div ng-repeat="v in vues | filter: vuesEchantillon" class="vignette">
@@ -13,7 +13,7 @@
   </p>	
 </div>	
 
-<div id="vue">
+<div ng-show="vue" id="vue">
 	<div id="photo">
 		<img ng-src="{{vue.Photo}}">
 	</div>
