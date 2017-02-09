@@ -51,11 +51,22 @@ body {
 	height: 150px;
 }
 
+#vues {
+	height: 150px;
+	background-color: #FFF;
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+.vignette {
+	height: 128px;
+	display: inline-block;	
+}
+
 #vues img {
-	height: 140px;
-	float: left;
-	border: 3px solid grey;
-	margin: 2px;
+	height: 128px;
+	padding: 2px;
+	display: flex;
 }
 
 #vues img:hover {

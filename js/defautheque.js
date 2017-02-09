@@ -21,6 +21,9 @@
 				
 		$http.get('rest/api.php/echantillon').success(function(response){
 			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
+			
+		$http.get('rest/api.php/vue').success(function(response){
+			$scope.vues = php_crud_api_transform(response).vue; });			
 
 		$scope.alliage = null;
 		$scope.procede = null;
@@ -58,10 +61,7 @@
 		}
 		
 		//$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
-
-		$http.get('rest/api.php/vue').success(function(response){
-			$scope.vues = php_crud_api_transform(response).vue; });	
-			
+		
 		$scope.vuesEchantillon = function(vue) {
 			return vue.ID_ECHANTILLON == $scope.echantillon.ID_ECHANTILLON;
 		}	

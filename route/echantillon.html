@@ -3,11 +3,11 @@
 	<img ng-src="{{echantillon.Photo}}">
 	
 	<div id="vues">
-		<div ng-repeat="v in vues | filter: vuesEchantillon">
+		<div ng-repeat="v in vues | filter: vuesEchantillon" class="vignette">
 	       <a href="" ng-click="selectVue(v)">
 				<img ng-src="{{v.Photo}}">
 			</a>
-		</div>	
+		</div>		
 	</div>	
 	
   </p>	
