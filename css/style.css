@@ -55,13 +55,9 @@ body {
 	height: 150px;
 }
 
-#echantillon  p {
-	float: right;
-	margin: 0;
-}
-
-#echantillon p img {
+#infos-echantillon , img {
 	height: 150px;
+	float: right;
 }
 
 #vues {
