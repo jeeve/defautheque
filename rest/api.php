@@ -1,6 +1,5 @@
 <?php
-
-//var_dump($_SERVER['REQUEST_METHOD'],$_SERVER['PATH_INFO']); die();
+// https://github.com/mevdschee/php-crud-api
 
 interface DatabaseInterface {
 	public function getSql($name);
