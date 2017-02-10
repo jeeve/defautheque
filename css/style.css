@@ -55,7 +55,12 @@ body {
 	height: 150px;
 }
 
-#infos-echantillon , img {
+#infos-echantillon {
+	height: 150px;
+	float: right;
+}
+
+#photo-echantillon {
 	height: 150px;
 	float: right;
 }
