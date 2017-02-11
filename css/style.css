@@ -61,6 +61,11 @@ body {
 
 #infos-echantillon table {
 	display: inline-block;
+	color: blue;
+}
+
+.titre {
+	font-weight: bold;
 }
 
 #infos-echantillon img {
