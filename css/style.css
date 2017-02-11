@@ -56,11 +56,14 @@ body {
 }
 
 #infos-echantillon {
-	height: 150px;
 	float: right;
 }
 
-#photo-echantillon {
+#infos-echantillon table {
+	display: inline-block;
+}
+
+#infos-echantillon img {
 	height: 150px;
 	float: right;
 }

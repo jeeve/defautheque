@@ -1,6 +1,12 @@
 <div id="echantillon">
 	
-	<div id="infos-echantillons">
+	<div id="infos-echantillon">
+		<table>
+			<tr ng-show="echantillon"><td>{{echantillon.Nom}}</td></tr>
+			<tr ng-show="echantillon"><td>{{alliage}}</td></tr>
+			<tr ng-show="echantillon"><td>{{procede}}</td></tr>
+			<tr ng-show="echantillon"><td>{{secteur}}</td></tr>
+		</table>	
 		<img id="photo-echantillon" ng-show="echantillon" ng-src="{{echantillon.Photo}}">
 	</div>
 	

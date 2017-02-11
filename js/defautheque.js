@@ -60,6 +60,29 @@
 			}
 		}
 		
+		$scope.alliage = null;
+		for (var i = 0; i < $scope.$parent.alliages.length; i++) {
+			if ($scope.$parent.alliages[i].ID_ALLIAGE == $scope.echantillon.ID_ALLIAGE) {
+				$scope.alliage = $scope.$parent.alliages[i].Nom;
+				break;
+			}
+		}
+		
+		$scope.procede = null;
+		for (var i = 0; i < $scope.$parent.procedes.length; i++) {
+			if ($scope.$parent.procedes[i].ID_PROCEDE == $scope.echantillon.ID_PROCEDE) {
+				$scope.procede = $scope.$parent.procedes[i].Nom;
+				break;
+			}
+		}
+
+		$scope.secteur = null;
+		for (var i = 0; i < $scope.$parent.secteurs.length; i++) {
+			if ($scope.$parent.secteurs[i].ID_SECTEUR == $scope.echantillon.ID_SECTEUR) {
+				$scope.secteur = $scope.$parent.secteurs[i].Nom;
+				break;
+			}
+		}
 		//$scope.echantillon = $scope.$parent.echantillons.find(function (x) { return x.ID_ECHANTILLON == $routeParams.id });
 		
 		$scope.vuesEchantillon = function(vue) {
