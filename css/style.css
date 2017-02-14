@@ -86,8 +86,10 @@ footer p {
 }
 
 #infos-echantillon img {
-	height: 150px;
+	height: 146px;
 	float: right;
+	border-width: 2px;
+	border: 2px solid white;
 }
 
 #vues {
