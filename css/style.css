@@ -67,7 +67,7 @@ footer p {
 	position: fixed;
 	top: 35px;
 	z-index: -10;
-	background-color: #BBB;
+	background-color: #EEE;
 	left: 215px;
 	width: calc(100% - 220px);	
 	height: 150px;
@@ -79,7 +79,6 @@ footer p {
 
 #infos-echantillon table {
 	display: inline-block;
-	color: blue;
 }
 
 .titre {
