@@ -11,19 +11,23 @@
 	app.controller('selection', ['$scope', '$http', function($scope, $http) {
  
 		$http.get('rest/api.php/alliage').success(function(response){
-			$scope.alliages = php_crud_api_transform(response).alliage; });
+			$scope.alliages = php_crud_api_transform(response).alliage; })
+			.then(function () {
 			
-		$http.get('rest/api.php/procede').success(function(response){
-			$scope.procedes = php_crud_api_transform(response).procede; });
+				return $http.get('rest/api.php/procede').success(function(response){
+					$scope.procedes = php_crud_api_transform(response).procede; })
+					.then(function () {
 			
-		$http.get('rest/api.php/secteur').success(function(response){
-			$scope.secteurs = php_crud_api_transform(response).secteur; });
+		return $http.get('rest/api.php/secteur').success(function(response){
+			$scope.secteurs = php_crud_api_transform(response).secteur; })
+			.then(function () {
 				
-		$http.get('rest/api.php/echantillon').success(function(response){
-			$scope.echantillons = php_crud_api_transform(response).echantillon; });	
+		return $http.get('rest/api.php/echantillon').success(function(response){
+			$scope.echantillons = php_crud_api_transform(response).echantillon; })
+			.then(function () {	
 			
-		$http.get('rest/api.php/vue').success(function(response){
-			$scope.vues = php_crud_api_transform(response).vue; });			
+		return $http.get('rest/api.php/vue').success(function(response){
+	$scope.vues = php_crud_api_transform(response).vue; })})})})});			
 
 		$scope.alliage = null;
 		$scope.procede = null;
