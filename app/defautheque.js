@@ -2,33 +2,26 @@
 
 	app.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
+		.when('/',{controller:'selection',
+		resolve:{
+			'bdData':function(bd){
+			// MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
+			return bd.promise;
+		}})
 		.when("/echantillon/:id", {
-			templateUrl: 'views/echantillon.html',
+			templateUrl: 'app/views/echantillon.html',
 			controller: 'echantillon'
 		})
 	}]);
 	
-	app.controller('selection', ['$scope', '$http', function($scope, $http) {
- 
-		$http.get('rest/api.php/alliage').success(function(response){
-			$scope.alliages = php_crud_api_transform(response).alliage; })
-			.then(function () {
-			
-				return $http.get('rest/api.php/procede').success(function(response){
-					$scope.procedes = php_crud_api_transform(response).procede; })
-					.then(function () {
-			
-		return $http.get('rest/api.php/secteur').success(function(response){
-			$scope.secteurs = php_crud_api_transform(response).secteur; })
-			.then(function () {
-				
-		return $http.get('rest/api.php/echantillon').success(function(response){
-			$scope.echantillons = php_crud_api_transform(response).echantillon; })
-			.then(function () {	
-			
-		return $http.get('rest/api.php/vue').success(function(response){
-	$scope.vues = php_crud_api_transform(response).vue; })})})})});			
-
+	app.controller('selection', ['$scope', '$http', function($scope, $http, bd) {
+ 	
+		$scope.alliages = bd.alliages();
+		$scope.procedes = bd.procedes();
+		$scope.secteurs = bd.secteurs();
+		$scope.echantillons = bd.echantillons();
+		$scope.vues = bd.vues();
+	
 		$scope.alliage = null;
 		$scope.procede = null;
 		$scope.secteur = null;
