@@ -2,7 +2,6 @@ body {
 	background-color: black;
 	font-family: Tahoma;
 	font-size: 12px;
-	padding-bottom: 20px;
 }
 
 #top {
@@ -120,6 +119,7 @@ footer p {
 	left: 215px;
 	top: 200px;
 	z-index: -20;
+	padding-bottom: 20px;
 }
 
 #photo img {
