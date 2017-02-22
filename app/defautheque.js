@@ -2,15 +2,6 @@
 
 	app.config(function($routeProvider) {
 		$routeProvider
-		.when('/',{
-			controller:'selectionCtrl',
-			template:'<div></div>',
-			resolve:{
-				'bdData':function(bd){
-				// MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
-					return bd.promise;
-				}}
-			})
 		.when("/echantillon/:id", {
 			templateUrl: 'app/views/echantillon.html',
 			controller: 'echantillonCtrl'
@@ -18,11 +9,10 @@
 	});
 	
 	app.controller('selectionCtrl', ['$scope', '$http', 'bd', function($scope, $http, bd) {
- 	
+ 			
+		bd.promise.then(function () {
+			
 		$scope.alliages = bd.alliages();
-		
-		console.log(bd.alliages());
-		
 		$scope.procedes = bd.procedes();
 		$scope.secteurs = bd.secteurs();
 		$scope.echantillons = bd.echantillons();
@@ -49,6 +39,7 @@
 		$scope.changeProcede = function() { $scope.alliage = null; $scope.secteur = null; $scope.$broadcast('initEchantillon'); }
 		$scope.changeSecteur = function() { $scope.alliage = null; $scope.procede = null; $scope.$broadcast('initEchantillon'); }
 		
+		});
 	}
 	]);
 	
