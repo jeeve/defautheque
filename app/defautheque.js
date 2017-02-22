@@ -1,22 +1,28 @@
 	var app = angular.module('defautheque', ['ngRoute']);
 
-	app.config(['$routeProvider', function($routeProvider) {
+	app.config(function($routeProvider) {
 		$routeProvider
-		.when('/',{controller:'selection',
-		resolve:{
-			'bdData':function(bd){
-			// MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
-			return bd.promise;
-		}})
+		.when('/',{
+			controller:'selectionCtrl',
+			template:'<div></div>',
+			resolve:{
+				'bdData':function(bd){
+				// MyServiceData will also be injectable in your controller, if you don't want this you could create a new promise with the $q service
+					return bd.promise;
+				}}
+			})
 		.when("/echantillon/:id", {
 			templateUrl: 'app/views/echantillon.html',
-			controller: 'echantillon'
+			controller: 'echantillonCtrl'
 		})
-	}]);
+	});
 	
-	app.controller('selection', ['$scope', '$http', function($scope, $http, bd) {
+	app.controller('selectionCtrl', ['$scope', '$http', 'bd', function($scope, $http, bd) {
  	
 		$scope.alliages = bd.alliages();
+		
+		console.log(bd.alliages());
+		
 		$scope.procedes = bd.procedes();
 		$scope.secteurs = bd.secteurs();
 		$scope.echantillons = bd.echantillons();
@@ -46,7 +52,7 @@
 	}
 	]);
 	
-  	app.controller('echantillon', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {	
+  	app.controller('echantillonCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {	
 		
 		// compatibilite IE sinon utiliser find
 		$scope.echantillon = null;
