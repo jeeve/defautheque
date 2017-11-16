@@ -2419,9 +2419,6 @@ class PHP_CRUD_API {
 						echo '"200":{';
 						echo '"description":"An array of '.$table['name'].'",';
 						echo '"schema":{';
-						echo '"type": "object",';
-						echo '"properties": {';
-						echo '"'.$table['name'].'": {';
 						echo '"type":"array",';
 						echo '"items":{';
 						echo '"type": "object",';
@@ -2454,8 +2451,6 @@ class PHP_CRUD_API {
 						}
 						echo '}'; //properties
 						echo '}'; //items
-						echo '}'; //table
-						echo '}'; //properties
 						echo '}'; //schema
 						echo '}'; //200
 						echo '}'; //responses
